@@ -1,0 +1,15 @@
+#File for application settings
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/EventHarbor
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+  application:
+    name: EventHarbor
