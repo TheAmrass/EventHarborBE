@@ -44,6 +44,8 @@ public class UserController {
                 }).orElseThrow(()->new UserNotFoundException(id));
     }
 
+    //Tohle dělám kvůli gitu, můžu tenhle řádek pak smazat :)))
+
     @DeleteMapping("/user/{id}")
     String deleteUser(@PathVariable Long id){
         if(!userRepository.existsById(id)){
