@@ -55,4 +55,6 @@ public class UserController {
         return "Uzivatel s id "+id+"byl uspesne odstranen.";
     }
 
+    //Zkouším git <3
+
 }
