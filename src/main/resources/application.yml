@@ -6,10 +6,20 @@ spring:
     username: root
     password:
     driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     hibernate:
       ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
 
-  application:
-    name: EventHarbor
+application:
+  security:
+    jwt:
+      secret-key: b96dbf5d27a26f45392d25dcf19b69dc5966a34f34c506013b9fdb142477266cb1e1595fcc32b5685d6e5501c8e4538a0b4398df3c9b4742d6eb3d97a0ecf2ee
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
