@@ -1,6 +1,7 @@
 package com.osu.venglar.EventHarbor.controller;
 
 import com.osu.venglar.EventHarbor.auth.*;
+import com.osu.venglar.EventHarbor.exception.UserNotFoundException;
 import com.osu.venglar.EventHarbor.model.User;
 import com.osu.venglar.EventHarbor.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class UserController {
     User userFromDB(@PathVariable Long id){return userRepository.findByUserId(id);}
 
     @DeleteMapping("/api/v1/user/{id}")
-    Integer deleteUser(@PathVariable Long id){return userRepository.deleteByUserId(id);}
+    Integer deleteUserRequest(@PathVariable Long id){return userRepository.deleteByUserId(id);}
 
     @PutMapping("/api/v1/user/{id}")
     public ResponseEntity<String> updateUser(
