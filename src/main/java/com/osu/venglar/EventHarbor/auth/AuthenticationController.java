@@ -27,6 +27,8 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.register(request));
     }
 
+
+
     //Second endpoint
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
