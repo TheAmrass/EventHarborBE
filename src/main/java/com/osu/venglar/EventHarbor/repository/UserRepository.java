@@ -1,10 +1,12 @@
 package com.osu.venglar.EventHarbor.repository;
 
 import com.osu.venglar.EventHarbor.auth.AuthenticationResponse;
+import com.osu.venglar.EventHarbor.model.Project;
 import com.osu.venglar.EventHarbor.model.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -17,3 +19,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Integer deleteByUserId(Long id);
 
 }
+

@@ -37,6 +37,8 @@ public class TaskController {
     @GetMapping("/api/v1/tasks/{userId}")
     List<Task> tasksForUser(@PathVariable Long userId){return taskRepository.findAllTaskByUser(userId);}
 
+    //TODO AssignedTasks - tasks that were assigned to the user
+
     @GetMapping("/api/v1/task/{taskId}")
     Task taskFromDb(@PathVariable Long taskId){return taskRepository.findByTaskId(taskId);}
 

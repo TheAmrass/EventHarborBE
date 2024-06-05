@@ -9,6 +9,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
+import java.util.List;
 
 @Data //Contains Getters, Setters, toString and more
 @Builder
@@ -18,37 +19,33 @@ import java.util.Date;
 @Setter
 
 @Entity //Automaticaly generate MySQL table
-public class Task {
+public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long taskId;
+    private Long projectId;
 
     private String title;
 
-    private String description;
+    private String notes;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createdDate", nullable = false, updatable = false)
     private Date createdDate;
 
-    private Date dueDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    public User user;
+    public User createdBy;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    public Project project;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_project",
+            joinColumns = { @JoinColumn(name = "project_id") },
+            inverseJoinColumns = { @JoinColumn(name = "user_id") }
+    )
+    public List<User> users;
 
-    @Enumerated(EnumType.ORDINAL)
-    public Priority priority;
-
-    private int completed = 0;
+    private Date projectDate;
 }
 
