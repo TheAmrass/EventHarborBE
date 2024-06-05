@@ -1,9 +1,5 @@
 package com.osu.venglar.EventHarbor.controller;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.osu.venglar.EventHarbor.auth.AuthenticationResponse;
-import com.osu.venglar.EventHarbor.auth.RegisterRequest;
-import com.osu.venglar.EventHarbor.auth.UpdateRequest;
 import com.osu.venglar.EventHarbor.model.Task;
 import com.osu.venglar.EventHarbor.repository.TaskRepository;
 import com.osu.venglar.EventHarbor.requests.AddTaskRequest;
@@ -15,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,12 +30,12 @@ public class TaskController {
     }
 
     @GetMapping("/api/v1/tasks/{userId}")
-    List<Task> tasksForUser(@PathVariable Long userId){return taskRepository.findAllTaskByUser(userId);}
+    List<Task> tasksForUser(@PathVariable Long userId){return service.getTasksForUser(userId);}
 
     //TODO AssignedTasks - tasks that were assigned to the user
 
     @GetMapping("/api/v1/task/{taskId}")
-    Task taskFromDb(@PathVariable Long taskId){return taskRepository.findByTaskId(taskId);}
+    Task taskFromDb(@PathVariable Long taskId){return taskRepository.getByTaskId(taskId);}
 
     @DeleteMapping("/api/v1/task/{id}")
     Integer deleteTask(@PathVariable Long id){return taskRepository.deleteByTaskId(id);}

@@ -1,6 +1,7 @@
 package com.osu.venglar.EventHarbor.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.osu.venglar.EventHarbor.model.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +21,6 @@ public class AuthenticationResponse {
     private String refreshToken;
     @JsonProperty("logged_id")
     private Long loggedId;
+    @JsonProperty("role")
+    private Role role;
 }

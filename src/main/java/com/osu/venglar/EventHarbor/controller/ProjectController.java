@@ -33,7 +33,7 @@ public class ProjectController {
     }
 
     @GetMapping("/api/v1/project/user/{userId}")
-   List<Project> projectsForUser(@PathVariable Long userId){
+   List <Project> projectsForUser(@PathVariable Long userId){
         return service.getProjectsForUser(userId);
     }
 
