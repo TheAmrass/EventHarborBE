@@ -24,6 +24,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long taskId;
 
+    @NonNull
     private String title;
 
     private String description;
@@ -33,6 +34,7 @@ public class Task {
     @Column(name = "createdDate", nullable = false, updatable = false)
     private Date createdDate;
 
+    @NonNull
     private Date dueDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -47,6 +49,7 @@ public class Task {
             joinColumns = { @JoinColumn(name = "task_id") },
             inverseJoinColumns = { @JoinColumn(name = "user_id") }
     )
+    @NonNull
     public List<User> users;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -56,6 +59,7 @@ public class Task {
     public Project project;
 
     @Enumerated(EnumType.ORDINAL)
+    @NonNull
     public Priority priority;
 
     private int completed = 0;

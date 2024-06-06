@@ -24,6 +24,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectId;
 
+    @NonNull
     private String title;
 
     private String notes;
@@ -36,6 +37,7 @@ public class Project {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @NonNull
     public User createdBy;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -44,6 +46,7 @@ public class Project {
             joinColumns = { @JoinColumn(name = "project_id") },
             inverseJoinColumns = { @JoinColumn(name = "user_id") }
     )
+    @NonNull
     public List<User> users;
 
     private Date projectDate;
