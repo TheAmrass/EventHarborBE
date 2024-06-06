@@ -32,6 +32,7 @@ public class User implements UserDetails {
     @NonNull
     private String name;
     @NonNull
+    @Column(unique = true)
     private String email;
     @NonNull
     @Enumerated(EnumType.ORDINAL) //Let the database know you are using enum

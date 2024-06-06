@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 //Created for AuthenticationController
 
 @Data
@@ -23,4 +25,6 @@ public class AuthenticationResponse {
     private Long loggedId;
     @JsonProperty("role")
     private Role role;
+    @JsonProperty("username")
+    private String username;
 }
